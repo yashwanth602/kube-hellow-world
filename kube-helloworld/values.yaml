@@ -1,0 +1,29 @@
+replicaCount: 2
+
+image:
+  repository: prakashmk/helloworld-k8s
+  pullPolicy: Always
+  tag: latest
+
+service:
+  name: kube-helloworld-service
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+ingress:
+  enabled: true
+  annotations:
+    alb.ingress.kubernetes.io/scheme: "internet-facing"
+    alb.ingress.kubernetes.io/target-type: "ip"
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+  className: alb
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              serviceName: kube-helloworld-service
+              servicePort: 80
+
