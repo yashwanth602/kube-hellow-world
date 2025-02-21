@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: prakashmk/helloworld-k8s
+  repository: 982534371930.dkr.ecr.ap-south-1.amazonaws.com/my-repo
   pullPolicy: Always
   tag: latest
 
