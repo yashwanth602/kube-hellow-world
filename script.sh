@@ -13,17 +13,7 @@ kubectl version --client
 
 # Install or Update AWS CLI
 echo "Checking AWS CLI installation..."
-if aws --version &>/dev/null; then
-    echo "AWS CLI already installed. Updating..."
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-    unzip -o awscliv2.zip
-    sudo ./aws/install --update
-else
-    echo "AWS CLI not found. Installing..."
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-    unzip awscliv2.zip
-    sudo ./aws/install
-fi
+
 echo "AWS CLI installed/updated successfully."
 aws --version
 
