@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+        # Add this label so Prometheus Operator knows to look for a ServiceMonitor
+        # that targets this pod (via its service).
+    spec:
+      containers:
+      - name: helloworld-container
+        image: prakashmk/helloworld-k8s:latest
+        ports:
+        - containerPort: 8080
+          # Give a name to the port for easier reference in ServiceMonitor
